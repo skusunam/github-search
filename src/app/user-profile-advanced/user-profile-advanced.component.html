@@ -1,0 +1,64 @@
+<div class="row">
+    <div class="col-md-4">
+        <button [class.btn-primary]="selectedTab === 1" class="btn btn-primary" type="button" (click)="showRepos()">
+          Repositories <span class="badge">{{ userProfile.public_repos }}</span>
+        </button>
+    </div>
+    <div class="col-md-4">
+        <button [class.btn-primary]="selectedTab === 2" class="btn" type="button" (click)="showFollowers()">
+          Followers <span class="badge">{{ userProfile.followers }}</span>
+        </button>
+    </div>
+    <div class="col-md-4">
+        <button [class.btn-primary]="selectedTab === 3" class="btn" type="button" (click)="showFollowing()">
+          Following <span class="badge">{{ userProfile.following }}</span>
+        </button>
+    </div>
+</div>
+
+<hr>
+
+<div class="row" *ngIf="selectedTab === 1">
+    <table class="table table-striped">
+        <tbody>
+            <tr *ngFor="let repo of repos">
+                <td>
+                    <a href="{{ repo.html_url }}">{{ repo.name }}</a>
+                    <p> {{ repo.description }}</p>
+                </td>
+                <td>{{ repo.language }}</td>
+                <td>{{ repo.stargazers_count}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="row" *ngIf="selectedTab === 2">
+    <table class="table table-striped">
+        <tbody>
+            <tr *ngFor="let follower of followers">
+                <td>
+                    <img [src]="follower.avatar_url" class="img-responsive" alt="Responsive image">
+                </td>
+                <td>
+                    {{ follower.login }}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="row" *ngIf="selectedTab === 3">
+    <table class="table table-striped">
+        <tbody>
+            <tr *ngFor="let following of followings">
+                <td>
+                    <img [src]="following.avatar_url" class="img-responsive" alt="Responsive image">
+                </td>
+                <td>
+                    {{ following.login }}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

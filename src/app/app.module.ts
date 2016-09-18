@@ -6,11 +6,13 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { GithubsearchService } from './githubsearch.service';
+import { UserProfileAdvancedComponent } from './user-profile-advanced/user-profile-advanced.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    UserProfileAdvancedComponent
   ],
   imports: [
     BrowserModule,
